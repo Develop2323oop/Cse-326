@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inter-Department Competition Leaderboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Inter-Department Competition Leaderboard</h1>
+    <p class="sub">Live points from every event. Add a result and the standings update instantly.</p>
+    <dl class="stats" aria-label="Summary">
+      <div><dt>Departments</dt><dd id="statDepts">0</dd></div>
+      <div><dt>Events held</dt><dd id="statEvents">0</dd></div>
+      <div><dt>Points awarded</dt><dd id="statPoints">0</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main class="wrap grid">
+  <section class="board" aria-labelledby="boardTitle">
+    <div class="board-head">
+      <h2 id="boardTitle">Standings</h2>
+      <div class="controls">
+        <label class="sr" for="filterEvent">Filter by event</label>
+        <select id="filterEvent"></select>
+        <label class="sr" for="search">Search department</label>
+        <input id="search" type="search" placeholder="Search department">
+      </div>
+    </div>
+    <ol id="rows" class="rows"></ol>
+    <p id="empty" class="empty" hidden>No department matches your search. Clear the search box to see all standings.</p>
+  </section>
+
+  <aside class="side">
+    <form id="form" class="card" novalidate>
+      <h2>Add a result</h2>
+      <label for="dept">Department</label>
+      <select id="dept" required></select>
+
+      <label for="event">Event name</label>
+      <input id="event" type="text" maxlength="40" placeholder="e.g. Hackathon" required>
+
+      <label for="points">Points (-500 to 1000)</label>
+      <input id="points" type="number" min="-500" max="1000" step="1" placeholder="e.g. 50" required>
+
+      <p id="msg" class="msg" role="status"></p>
+      <button type="submit" class="primary">Add points</button>
+    </form>
+
+    <div class="card">
+      <h2>Recent activity</h2>
+      <ul id="log" class="log"></ul>
+      <button id="reset" class="ghost" type="button">Reset to sample data</button>
+    </div>
+  </aside>
+</main>
+
+<footer class="wrap foot">Built with HTML, CSS and JavaScript. Data is saved in your browser.</footer>
+<script src="script.js"></script>
+</body>
+</html>
